@@ -31,7 +31,7 @@ def dict_get(dict_, objkey):
                 ret = dict_get(value[0], objkey)
                 if ret is not None:
                     return ret
-    # 如果找不到指定的key，返回None
+    # 如果找不到指定的key，返回None 
     return None
 
 
