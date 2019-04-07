@@ -2,7 +2,7 @@
 # @Time    : 2019/4/7 3:17
 # @Author  : Nismison
 # @FileName: requests_func.py
-# @Description: requests函数
+# @Description: http请求处理函数
 # @Blog    ：https://blog.tryfang.cn
 
 from requests import get
