@@ -1,40 +1,19 @@
-# Bilibili 网站爬虫实例
+# Bilibili网站爬虫
 
 
---------------------
-
- - audio.py  -->  Bilibili 音频栏目爬虫
- 
-![][2]
-![][3]
-
-
----------------------
- - pictures.py  -->  Bilibili 相簿栏目爬虫
- 
-![][4]
-![][5]
-
-
------------------
- - video.py --> Bilibili 视频信息爬虫
-
-![][6]
-
+-------------
+我胖虎今天就是要把b站爬完
+--------
 
 
 -------------
 
 
-Bilibili视频地址:
+Bilibili视频地址:[https://space.bilibili.com/25216986][2]
 ============
 个人博客: [https://blog.tryfang.cn][1]，欢迎前来交流
 =============
 
 
 [1]:https://blog.tryfang.cn
-[2]:https://blog.tryfang.cn/usr/images/audio_demo.png
-[3]:https://blog.tryfang.cn/usr/images/audio_demo2.png
-[4]:https://blog.tryfang.cn/usr/images/picture_demo.png
-[5]:https://blog.tryfang.cn/usr/images/picture_demo2.png
-[6]:https://blog.tryfang.cn/usr/images/video_demo.png
+[2]:https://space.bilibili.com/25216986
