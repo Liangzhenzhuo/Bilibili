@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/4/6 19:42
 # @Author  : Nismison
-# @FileName: crawler.py
+# @FileName: pictures.py
 # @Description: Bilibili相簿爬取
 # @Blog    ：https://blog.tryfang.cn
 
-from requests import Session
-from fake_useragent import UserAgent
 from os.path import dirname, exists
 from os import mkdir
+from functions.requests_func import url_get
 
 
 def dict_get(dict_, objkey):
@@ -36,30 +35,28 @@ def dict_get(dict_, objkey):
     return None
 
 
-def crawler(type, sort, path='save_picture', page_num=0):
+def crawler(type_, sort, path='save_picture', page_num=0):
     """
-    :param type: 分类 --> cos or sifu
+    :param type_: 分类 --> cos or sifu
     :param sort: 排序 --> hot or new
     :param path: 路径（当前目录下）
     :param page_num: 开始页，默认0页开始
     """
     if path != '' and not exists(path):
         mkdir(path)
-    BASE_DIR = dirname(__file__) + "/" + path + "/"
-    session = Session()
-    headers = {
-        "User-Agent": UserAgent().random,
-    }
-    url = "https://api.vc.bilibili.com/link_draw/v2/Photo/list?category={}&type={}&page_num={}&page_size=20".format(type, sort, page_num)
-    res = session.get(url=url, headers=headers)
-    items = dict_get(res.json(), "items")
+    base_dir = dirname(__file__) + "/" + path + "/"
+    url = "https://api.vc.bilibili.com/link_draw/v2/Photo/list?category={}&type={}&page_num={}&page_size=20".format(
+        type_, sort, page_num)
+    res = url_get(url=url, mode="json")
+    items = dict_get(res, "items")
     if len(items) == 0:
         print("Current page have no any picture, Exit mission!")
         return
     for i in items:
         title = dict_get(i, "title")  # 相簿标题
         up = dict_get(i, "name")  # up主
-        directory_name = title.replace("/", '').replace("<", '').replace(">", '').replace("|", '').replace(":",'').replace("*", '').replace("?", '').replace("\\", '') + "-" + up
+        directory_name = title.replace("/", '').replace("<", '').replace(">", '').replace(
+            "|", '').replace(":", '').replace("*", '').replace("?", '').replace("\\", '') + "-" + up
         if not exists(path + "/" + directory_name):
             mkdir(path + "/" + directory_name)
         picture_list = []  # 存放图片地址
@@ -68,20 +65,20 @@ def crawler(type, sort, path='save_picture', page_num=0):
         print("Downloading Pictures")
         for pic in picture_list:
             pic_name = pic.split("/")[-1]
-            full_pic_path = BASE_DIR + directory_name + "/" + pic_name
+            full_pic_path = base_dir + directory_name + "/" + pic_name
             if not exists(full_pic_path):
-                pic_get = session.get(pic, headers=headers)
+                pic_get = url_get(url=pic, mode="content")
                 with open(full_pic_path, "wb") as pic_file:
-                    pic_file.write(pic_get.content)
+                    pic_file.write(pic_get)
             else:
                 continue
         print("current page: {}".format(page_num + 1))
         print("title: {}".format(title))
         print("up: {}".format(up))
         print("picture: {}".format(len(picture_list)))
-        print("-"*60)
-    crawler(type=type, sort=sort, path=path, page_num=page_num + 1)
+        print("-" * 60)
+    crawler(type_=type_, sort=sort, path=path, page_num=page_num + 1)
 
 
 if __name__ == '__main__':
-    crawler(type="sifu", sort="hot")
+    crawler(type_="sifu", sort="hot")
