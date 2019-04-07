@@ -2,7 +2,7 @@
 # @Time    : 2019/4/7 3:15
 # @Author  : Nismison
 # @FileName: deal_json.py
-# @Description: json处理函数
+# @Description: json数据处理函数
 # @Blog    ：https://blog.tryfang.cn
 
 def dict_get(dict_, objkey):
