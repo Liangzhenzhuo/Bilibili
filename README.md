@@ -16,6 +16,13 @@
 ![][5]
 
 
+-----------------
+ - video.py --> Bilibili 视频信息爬虫
+
+![][6]
+
+
+
 -------------
 
 
@@ -30,3 +37,4 @@ Bilibili视频地址:
 [3]:https://blog.tryfang.cn/usr/images/audio_demo2.png
 [4]:https://blog.tryfang.cn/usr/images/picture_demo.png
 [5]:https://blog.tryfang.cn/usr/images/picture_demo2.png
+[6]:https://blog.tryfang.cn/usr/images/video_demo.png
