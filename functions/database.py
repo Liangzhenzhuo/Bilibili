@@ -2,7 +2,7 @@
 # @Time    : 2019/4/7 4:17
 # @Author  : Nismison
 # @FileName: database.py
-# @Description: 数据库函数
+# @Description: 数据库操作函数
 # @Blog    ：https://blog.tryfang.cn
 
 from pymysql import connect
