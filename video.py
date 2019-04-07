@@ -35,7 +35,7 @@ def crawler(av):
         data['video_danmaku'] = dict_get(get_json, "danmaku")
         video_reprint = dict_get(get_json, "no_reprint")
         if video_reprint == 0:
-            data['video_reprint'] = "转载"
+            data['video_reprint'] = "转载" 
         else:
             data['video_reprint'] = "原创"
 
