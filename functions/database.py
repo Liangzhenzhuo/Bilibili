@@ -2,7 +2,7 @@
 # @Time    : 2019/4/7 4:17
 # @Author  : Nismison
 # @FileName: database.py
-# @Description: 数据库操作函数
+# @Description: 数据库函数
 # @Blog    ：https://blog.tryfang.cn
 
 from pymysql import connect
@@ -35,7 +35,7 @@ class Database(object):
                 sql = "select {} from {}".format(key, table_name)
                 self.__cursor.execute(sql)
                 return list(self.__cursor.fetchall())
-            elif isinstance(kwargs['key'], str) and isinstance(kwargs['value'], str):
+            elif isinstance(kwargs['key'], str) and (isinstance(kwargs['value'], str) or isinstance(kwargs['value'], int) or isinstance(kwargs['value'], float)):
                 sql = "select * from {} where {}='{}'".format(table_name, kwargs['key'], kwargs['value'])
                 return self.__cursor.execute(sql)
             else:
@@ -48,7 +48,7 @@ class Database(object):
             values = kwargs['values']
             # 如果keys和values类型不是list，抛出异常
             if not isinstance(keys, list) or not isinstance(values, list):
-                raise TypeError("The 'keys' and 'value' must be list type.")
+                raise TypeError("The 'keys' and 'value' must be list or number type.")
             try:
                 for i in range(len(keys)):
                     if i == len(keys) - 1:
@@ -81,3 +81,10 @@ class Database(object):
         :return: Connection Object
         """
         return self.__connection
+
+    def close(self):
+        """
+        close connection and cursor
+        """
+        self.__cursor.close()
+        self.__connection.close()
