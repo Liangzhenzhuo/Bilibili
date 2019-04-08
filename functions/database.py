@@ -13,7 +13,7 @@ class Database(object):
         self.__connection = connect(host, username, password, db_name)
         self.__cursor = self.__connection.cursor()
 
-    def execute_sql(self, table_name, mode="search", **kwargs):
+    def execute_sql(self, table_name, mode="search", select="*", **kwargs):
         """
         :param table_name: 需要执行操作的表名（str）
         :param mode: 需要执行的操作（search: 查询，insert: 插入）
@@ -36,7 +36,7 @@ class Database(object):
                 self.__cursor.execute(sql)
                 return list(self.__cursor.fetchall())
             elif isinstance(kwargs['key'], str) and (isinstance(kwargs['value'], str) or isinstance(kwargs['value'], int) or isinstance(kwargs['value'], float)):
-                sql = "select * from {} where {}='{}'".format(table_name, kwargs['key'], kwargs['value'])
+                sql = "select {} from {} where {}='{}'".format(select, table_name, kwargs['key'], kwargs['value'])
                 return self.__cursor.execute(sql)
             else:
                 raise TypeError("The 'key' must be a list or str type and the 'value' must be a string type.")
