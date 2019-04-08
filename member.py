@@ -107,5 +107,4 @@ def member_crawler(mid):
 
 
 if __name__ == '__main__':
-    # thread_create(5, member_crawler)
-    member_crawler(mid=4420)
+    member_crawler(mid=0)
