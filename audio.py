@@ -2,7 +2,7 @@
 # @Time    : 2019/4/7 0:49
 # @Author  : Nismison
 # @FileName: audio.py
-# @Description: bilibili 音频爬取
+# @Description: bilibili音频爬取下载
 # @Blog    ：https://blog.tryfang.cn
 
 from os.path import dirname, exists
@@ -32,7 +32,7 @@ def audio_crawler(path='songs'):
         if data is None:
             continue
         items = dict_get(data, "data")
-        # 获取专辑信息请求 
+        # 获取专辑信息请求
         info_url = "https://www.bilibili.com/audio/music-service-c/web/menu/info?sid={}".format(sid)
         info_get = url_get(url=info_url, mode="json")
         album_title = dict_get(info_get, "title").replace("/", '').replace("<", '').replace(">", '').replace(
