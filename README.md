@@ -25,11 +25,6 @@ File Name | Description | Remarks
 [_functions_][12]/[_thread.py_][18] | 多线程相关函数 | None
 
 
-
-------------------------
-Bilibili:[https://space.bilibili.com/25216986][2]
------------
-个人博客: [https://blog.tryfang.cn][1]，欢迎前来交流
 ---------------
 
 
